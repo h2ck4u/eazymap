@@ -5,6 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "build": "tsc",
+    "watch": "tsc-watch",
     "test": "npm run test"
   },
   "repository": {
@@ -19,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/h2ck4u/eazymap/issues"
   },
-  "homepage": "https://github.com/h2ck4u/eazymap#readme"
+  "homepage": "https://github.com/h2ck4u/eazymap#readme",
+  "devDependencies": {
+    "tsc-watch": "^4.5.0"
+  }
 }
