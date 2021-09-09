@@ -1,0 +1,23 @@
+{
+  "name": "eazymap",
+  "version": "1.0.0",
+  "description": "eazymap",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/h2ck4u/eazymap.git"
+  },
+  "keywords": [
+    "map"
+  ],
+  "author": "jeungeuny",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/h2ck4u/eazymap/issues"
+  },
+  "homepage": "https://github.com/h2ck4u/eazymap#readme"
+}
