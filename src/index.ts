@@ -13,7 +13,7 @@ function drawMap() {
   const width = 600;
   const height = 1000;
   const svg = d3
-    .select('.d3')
+    .select('.korea')
     .append('svg')
     .attr('width', width).attr('height', height);
   const map = svg.append('g');
