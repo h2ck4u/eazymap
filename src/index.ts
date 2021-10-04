@@ -15,7 +15,7 @@ function drawMap() {
   const svg = d3
     .select('.korea')
     .append('svg')
-    .attr('width', width).attr('height', height);
+    .attr('width', width).attr('height', height) as any;
   const map = svg.append('g');
 
   let projection = d3.geoMercator()
@@ -36,9 +36,16 @@ function drawMap() {
     .enter().append('path')
     .attr('d', path);
 
-  // const zoomed = () => {
-  //   map.attr('transform', d3.geoTransform)
-  // }
-  // const zoom = d3.zoom().scaleExtent([1, 8]).on('zoom', zoomed)
-  // svg.call(zoom)
+  const zoom = d3.zoom()
+    .scaleExtent([1, 8])
+    .on("zoom", zoomed);
+
+  function zoomed(event: any) {
+    const { transform } = event;
+    map.attr("transform", transform);
+    map.attr("stroke-width", 1 / transform.k);
+  }
+  console.log(svg);
+
+  svg.call(zoom)
 }
