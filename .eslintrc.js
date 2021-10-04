@@ -24,8 +24,6 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:promise/recommended',
-    'plugin:@next/next/core-web-vitals'
-    // 'plugin:@next/next/recommended'
   ],
   parserOptions: {
     ecmaVersion: 2020,
@@ -39,10 +37,6 @@ module.exports = {
       extends: [
         'airbnb-typescript',
         'airbnb/hooks',
-        '@kakao/styleguide/comment',
-        '@kakao/styleguide/es3',
-        '@kakao/styleguide/es2015',
-        '@kakao/styleguide/typescript',
         'plugin:import/typescript',
         'plugin:@typescript-eslint/recommended',
         'plugin:@typescript-eslint/recommended-requiring-type-checking'
@@ -88,7 +82,6 @@ module.exports = {
           contextType: 'static public field',
           displayName: 'static public field',
         }],
-        '@next/next/link-passhref': 'off',
         '@typescript-eslint/comma-dangle': ['error', {
           functions: 'never', objects: 'always-multiline', arrays: 'always-multiline'
         }],
