@@ -5,22 +5,19 @@ window.onload = function () {
   drawMap();
 };
 
-function drawMap() {
+function drawMap () {
   const koreaMap = require('../public/korea.json');
   const geojson = topoclient.feature(koreaMap, koreaMap.objects.skorea_provinces_2018_geo) as any;
   const center = d3.geoCentroid(geojson);
 
   const width = 600;
   const height = 1000;
-  const svg = d3
-    .select('.korea')
-    .append('svg')
-    .attr('width', width).attr('height', height) as any;
+  const svg = d3.select('.korea').append('svg').attr('width', width).attr('height', height) as any;
   const map = svg.append('g');
 
-  let projection = d3.geoMercator()
+  const projection = d3.geoMercator()
     .scale(1)
-    .translate([0, 0])
+    .translate([0, 0]);
 
   const path = d3.geoPath().projection(projection) as any;
   const bounds = path.bounds(geojson);
@@ -38,14 +35,14 @@ function drawMap() {
 
   const zoom = d3.zoom()
     .scaleExtent([1, 8])
-    .on("zoom", zoomed);
+    .on('zoom', zoomed);
 
-  function zoomed(event: any) {
-    const { transform } = event;
-    map.attr("transform", transform);
-    map.attr("stroke-width", 1 / transform.k);
+  function zoomed (event: any) {
+    const {transform} = event;
+    map.attr('transform', transform);
+    map.attr('stroke-width', 1 / transform.k);
   }
   console.log(svg);
 
-  svg.call(zoom)
+  svg.call(zoom);
 }

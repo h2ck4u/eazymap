@@ -5,19 +5,14 @@ module.exports = {
     node: true
   },
   plugins: [
-    'react',
     'import',
     'promise',
     'json-format',
-    'eslint-plugin-react',
-    'eslint-plugin-jsx-a11y'
   ],
   rules: {
     'max-len': ['error', 120],
     'multiline-comment-style': 'off',
     'no-trailing-spaces': ['error', { 'ignoreComments': true }],
-    'react/jsx-uses-react': 'error',
-    'react/jsx-uses-vars': 'error',
     'promise/catch-or-return': 'off',
     'promise/always-return': 'off'
   },
@@ -36,7 +31,6 @@ module.exports = {
       plugins: ['@typescript-eslint'],
       extends: [
         'airbnb-typescript',
-        'airbnb/hooks',
         'plugin:import/typescript',
         'plugin:@typescript-eslint/recommended',
         'plugin:@typescript-eslint/recommended-requiring-type-checking'
@@ -59,29 +53,11 @@ module.exports = {
         'no-unused-expressions': 'off',
         'import/no-extraneous-dependencies': ['error', {devDependencies: ['**/__*__/*', '**/__coverage__.*']}],
         'import/prefer-default-export': 'off',
-        'jsdoc/require-param': 'off',
-        'jsdoc/require-returns': 'off',
-        'jsdoc/check-indentation': 'off',
-        'jsx-a11y/anchor-is-valid': 'off',
-        'jsx-a11y/label-has-associated-control': 'off',
-        'jsx-a11y/click-events-have-key-events': 'off',
-        'jsx-a11y/iframe-has-title': 'off',
-        'jsx-a11y/no-static-element-interactions': 'off',
-        'jsx-a11y/media-has-caption': 'off',
         'lines-between-class-members': ['error', 'always', {exceptAfterSingleLine: true}],
         'no-console': 'off',
         'no-restricted-syntax': ['error', 'WithStatement', 'BinaryExpression[operator="in"]'],
         'object-curly-newline': ['error', {consistent: true}],
         'react-hooks/exhaustive-deps': 'off',
-        'react/jsx-props-no-spreading': 'off',
-        'react/prop-types': 'off',
-        'react/react-in-jsx-scope': 'off',
-        'react/static-property-placement': ['warn', 'property assignment', {
-          childContextTypes: 'static getter',
-          contextTypes: 'static public field',
-          contextType: 'static public field',
-          displayName: 'static public field',
-        }],
         '@typescript-eslint/comma-dangle': ['error', {
           functions: 'never', objects: 'always-multiline', arrays: 'always-multiline'
         }],
@@ -96,16 +72,12 @@ module.exports = {
         '@typescript-eslint/object-curly-spacing': ['error', 'never'],
         "@typescript-eslint/no-shadow": ['error'],
 
-        // 너무 오류가 많아서 천천히 고치기
         'max-len': ['warn', 120, {
           ignoreTemplateLiterals: true,
           ignoreRegExpLiterals: true,
           ignoreStrings: true,
           ignoreComments: true
         }],
-        'jsx-a11y/aria-role': 'off',
-        'jsx-a11y/no-noninteractive-element-interactions': 'warn',
-        'react/no-array-index-key': 'warn',
         '@typescript-eslint/no-unsafe-assignment': 'off',
         '@typescript-eslint/no-unsafe-call': 'warn',
         '@typescript-eslint/no-unsafe-member-access': 'warn',
