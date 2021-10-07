@@ -1,30 +1,33 @@
-import * as d3 from 'd3';
-import * as topoclient from 'topojson-client';
+/* eslint-disable @typescript-eslint/no-var-requires */
+import {select, geoMercator, geoPath, zoom} from 'd3';
+import {feature} from 'topojson-client';
 
 window.onload = function () {
   drawMap();
 };
 
 function drawMap () {
+  // eslint-disable-next-line global-require
   const koreaMap = require('../public/korea.json');
-  const geojson = topoclient.feature(koreaMap, koreaMap.objects.skorea_provinces_2018_geo) as any;
-  const center = d3.geoCentroid(geojson);
+  const geojson = feature(koreaMap, koreaMap.objects.skorea_provinces_2018_geo) as any;
 
   const width = 600;
   const height = 1000;
-  const svg = d3.select('.korea').append('svg').attr('width', width).attr('height', height) as any;
+  const svg = select('.korea').append('svg').attr('width', width).attr('height', height);
   const map = svg.append('g');
 
-  const projection = d3.geoMercator()
+  const projection = geoMercator()
     .scale(1)
     .translate([0, 0]);
 
-  const path = d3.geoPath().projection(projection) as any;
+  const path = geoPath().projection(projection);
   const bounds = path.bounds(geojson);
   const widthScale = (bounds[1][0] - bounds[0][0]) / width;
   const heightScale = (bounds[1][1] - bounds[0][1]) / height;
   const scale = 1 / Math.max(widthScale, heightScale);
+  // eslint-disable-next-line no-mixed-operators
   const xoffset = width / 2 - scale * (bounds[1][0] + bounds[0][0]) / 2 + 10;
+  // eslint-disable-next-line no-mixed-operators
   const yoffset = height / 2 - scale * (bounds[1][1] + bounds[0][1]) / 2 + 80;
   projection.scale(scale).translate([xoffset, yoffset]);
 
@@ -33,16 +36,16 @@ function drawMap () {
     .enter().append('path')
     .attr('d', path);
 
-  const zoom = d3.zoom()
+  const zoomHandler = zoom()
     .scaleExtent([1, 8])
     .on('zoom', zoomed);
 
-  function zoomed (event: any) {
+  function zoomed (event) {
+    console.log(event);
     const {transform} = event;
     map.attr('transform', transform);
     map.attr('stroke-width', 1 / transform.k);
   }
-  console.log(svg);
 
-  svg.call(zoom);
+  svg.call(zoomHandler);
 }
